@@ -22,5 +22,14 @@ def printBinaryTree(root):
     print()
     printBinaryTree(root.left)
     printBinaryTree(root.right)
+
+def removeLeaf(root):
+    if root is None:
+        return None
+    if root.left is None and root.right is None:
+        return None
+    root.left=removeLeaf(root.left)
+    root.right=removeLeaf(root.right)
 root=takeInput()
+removeLeaf(root)
 printBinaryTree(root)
