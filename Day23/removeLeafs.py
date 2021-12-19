@@ -30,6 +30,6 @@ def removeLeaf(root):
         return None
     root.left=removeLeaf(root.left)
     root.right=removeLeaf(root.right)
-root=takeInput()
-removeLeaf(root)
-printBinaryTree(root)
+# root=takeInput()
+# removeLeaf(root)
+# printBinaryTree(root)

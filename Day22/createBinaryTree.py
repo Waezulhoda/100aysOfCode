@@ -22,5 +22,5 @@ def printBinaryTree(root):
     print()
     printBinaryTree(root.left)
     printBinaryTree(root.right)
-root=takeInput()
-printBinaryTree(root)
+# root=takeInput()
+# printBinaryTree(root)

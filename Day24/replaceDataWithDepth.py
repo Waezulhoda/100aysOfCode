@@ -22,16 +22,14 @@ def printBinaryTree(root):
     print()
     printBinaryTree(root.left)
     printBinaryTree(root.right)
-def printSibling(root):
+def replaceDataWithNodes(root,depth):
     if root is None:
-        return
-    if root.left is not None and root.right is None:
-        print(root.left.data,end=' ')  #if i return here it simply means I don't want to
-        #find any other nodes with this node. use the example 
-        #(1 2 3 4 -1 -1...till the end of bt)
-    if root.left is None and root.right is not None:
-        print(root.right.data,end=' ')
-    leftNode=printSibling(root.left)
-    rightNode=printSibling(root.right)
+        return None
+    leftNode=replaceDataWithNodes(root.left,depth+1)
+    rightNode=replaceDataWithNodes(root.right,depth+1)
+    root.data=depth
+    return root
 root=takeInput()
-printSibling(root)
+printBinaryTree(root)
+replaceDataWithNodes(root,0)
+printBinaryTree(root)

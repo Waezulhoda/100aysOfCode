@@ -22,16 +22,15 @@ def printBinaryTree(root):
     print()
     printBinaryTree(root.left)
     printBinaryTree(root.right)
-def printSibling(root):
+def mirror(root):
     if root is None:
-        return
-    if root.left is not None and root.right is None:
-        print(root.left.data,end=' ')  #if i return here it simply means I don't want to
-        #find any other nodes with this node. use the example 
-        #(1 2 3 4 -1 -1...till the end of bt)
-    if root.left is None and root.right is not None:
-        print(root.right.data,end=' ')
-    leftNode=printSibling(root.left)
-    rightNode=printSibling(root.right)
+        return None
+    leftNode=mirror(root.left)
+    rightNode=mirror(root.right)
+    root.left=rightNode #if we right rn,ln=ln,rn but root.left is still have the same address na
+    root.right=leftNode
+    return root #if we will not return leftNode and rightNode will Only have None in every funct call
 root=takeInput()
-printSibling(root)
+printBinaryTree(root)
+mirror(root)
+printBinaryTree(root)

@@ -22,16 +22,27 @@ def printBinaryTree(root):
     print()
     printBinaryTree(root.left)
     printBinaryTree(root.right)
-def printSibling(root):
+def heightOfBt(root):
     if root is None:
-        return
-    if root.left is not None and root.right is None:
-        print(root.left.data,end=' ')  #if i return here it simply means I don't want to
-        #find any other nodes with this node. use the example 
-        #(1 2 3 4 -1 -1...till the end of bt)
-    if root.left is None and root.right is not None:
-        print(root.right.data,end=' ')
-    leftNode=printSibling(root.left)
-    rightNode=printSibling(root.right)
+        return 0
+    leftNode=heightOfBt(root.left)
+    rightNode=heightOfBt(root.right)
+    if leftNode>rightNode:
+        return 1+leftNode
+    else:
+        return 1+rightNode
+def isBalanced(root):
+    if root is None:
+        return True
+    lh=heightOfBt(root.left)
+    rh=heightOfBt(root.right)
+    if lh-rh>1 or rh-lh>1:
+        return False
+    leftNode=isBalanced(root.left)
+    rightNode=isBalanced(root.right)
+    if leftNode is True and rightNode is True:
+        return True
+    else:
+        False
 root=takeInput()
-printSibling(root)
+print(isBalanced(root))
