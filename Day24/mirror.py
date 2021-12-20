@@ -30,7 +30,7 @@ def mirror(root):
     root.left=rightNode #if we right rn,ln=ln,rn but root.left is still have the same address na
     root.right=leftNode
     return root #if we will not return leftNode and rightNode will Only have None in every funct call
-root=takeInput()
-printBinaryTree(root)
-mirror(root)
-printBinaryTree(root)
+# root=takeInput()
+# printBinaryTree(root)
+# mirror(root)
+# printBinaryTree(root)
